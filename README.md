@@ -46,7 +46,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourname/ds-agent.git
+git clone https://github.com/emremotan/ds-agent.git
 cd ds-agent
 
 # Set up a virtual environment
