@@ -1,0 +1,5 @@
+sources:
+  # add data source for common_player_info.csv from Kaggle's NBA dataset
+  common_player_info:
+    path: data/common_player_info.csv
+    format: csv

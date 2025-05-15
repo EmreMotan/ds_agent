@@ -1,0 +1,40 @@
+{
+  "episode_id": "DS-25-007",
+  "title": "NBA Player Career Longevity Analysis since 1990",
+  "goal_statement": "Your goal is to answer the following questions in a nicely written report: Which NBA players since 1990 have had the longest careers (by number of seasons or games played), and what are common characteristics (e.g., position, height, draft year) among them? Include a table of the top 20 players with their characters. Create visualizations that enhance the analysis and include them at appropriate points in the Markdown report. Make sure to exclude the players named 'Andrew Gaze' and 'Ernie Barrett' as they appear to be erroneous entries in the datasetwith respect to 'from_year' and 'to_year' values.",
+  "created_at": "2025-05-06T03:34:18.377363Z",
+  "updated_at": "2025-05-06T03:35:30.270188Z",
+  "status": "REVIEW",
+  "owners": {
+    "human_lead": "user",
+    "agent_lead": "ds-agent"
+  },
+  "iteration_history": [
+    {
+      "timestamp": "2025-05-06T03:34:18.377363Z",
+      "event_type": "STATUS_CHANGE",
+      "description": "Episode created with MEDIUM priority"
+    },
+    {
+      "timestamp": "2025-05-06T03:34:46.742927Z",
+      "event_type": "STATUS_CHANGE",
+      "description": "Status changed from SCOPED to IN_ANALYSIS"
+    },
+    {
+      "timestamp": "2025-05-06T03:34:46.742959Z",
+      "event_type": "STATUS_CHANGE",
+      "description": "Status changed from SCOPED to IN_ANALYSIS"
+    },
+    {
+      "timestamp": "2025-05-06T03:35:30.270188Z",
+      "event_type": "STATUS_CHANGE",
+      "description": "Status changed from IN_ANALYSIS to REVIEW"
+    },
+    {
+      "timestamp": "2025-05-06T03:35:30.270560Z",
+      "event_type": "STATUS_CHANGE",
+      "description": "Status changed from IN_ANALYSIS to REVIEW"
+    }
+  ],
+  "artifacts": []
+}

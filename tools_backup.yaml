@@ -1,0 +1,25 @@
+plot_time_series:
+  fn: ds_agent.analysis.analytics_tools.plot_time_series
+  args: [df, x, y, title, episode_id, hue]
+plot_bar:
+  fn: ds_agent.analysis.analytics_tools.plot_bar
+  args: [df, x, y, title, episode_id]
+plot_scatter:
+  fn: ds_agent.analysis.analytics_tools.plot_scatter
+  args: [df, x, y, title, episode_id]
+
+
+            "plot_bar": f"plot_bar(df, x='player', y='points', title='Points by Player', episode_id='{eid}')",
+            "plot_scatter": f"plot_scatter(df, x='height', y='points', title='Height vs Points', episode_id='{eid}')",
+
+
+Example plot_histogram usage:
+    - plot_histogram(df, column='weight', title='Distribution of Weight', episode_id='EP-XXX')
+  Example plot_bar usage:
+    - plot_bar(df, x='position', y=None, title='Distribution of Position', episode_id='EP-XXX')
+            "  - id: plot_step\n"
+            "    tool: plot_bar\n"
+            "    args:\n"
+            "      df: agg_step\n"
+            "      x: category\n"
+            "      y: avg  # NOT value_avg or value_mean\n"

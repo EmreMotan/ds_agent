@@ -1,0 +1,21 @@
+stateDiagram-v2
+    [*] --> SCOPED
+    SCOPED --> IN_ANALYSIS
+    IN_ANALYSIS --> REVIEW
+    REVIEW --> REVISION
+    REVISION --> IN_ANALYSIS
+    REVIEW --> FINAL
+    FINAL --> ARCHIVED
+    ARCHIVED --> [*]
+    
+    %% Blocked state can be entered from any active state
+    SCOPED --> BLOCKED
+    IN_ANALYSIS --> BLOCKED
+    REVIEW --> BLOCKED
+    REVISION --> BLOCKED
+    
+    %% Unblocking returns to previous state
+    BLOCKED --> SCOPED
+    BLOCKED --> IN_ANALYSIS
+    BLOCKED --> REVIEW
+    BLOCKED --> REVISION 

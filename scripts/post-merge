@@ -1,0 +1,22 @@
+#!/bin/sh
+# post-merge: Trigger artifact snapshotting after merge
+
+EPISODES_DIR="episodes"
+SNAPSHOT_CLI="bin/snapshot_outputs.py"
+
+if [ ! -d "$EPISODES_DIR" ]; then
+  echo "[post-merge] No episodes directory found."
+  exit 0
+fi
+
+for epdir in "$EPISODES_DIR"/*; do
+  if [ -d "$epdir" ] && [ -f "$epdir/episode.json" ]; then
+    ep_id=$(basename "$epdir")
+    echo "[post-merge] Snapshotting artifacts for episode $ep_id..."
+    python3 "$SNAPSHOT_CLI" --episode "$ep_id"
+  fi
+
+done
+
+echo "[post-merge] Snapshotting complete."
+exit 0 

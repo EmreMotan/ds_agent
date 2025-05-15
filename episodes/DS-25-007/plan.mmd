@@ -1,0 +1,35 @@
+flowchart TD
+    step_0["load_table&lt;br&gt;table=common_player_info&lt;br&gt;cols=[draft_round, to_year, draft_year, ...]&lt;br&gt;where=(from_year &gt;= 1990) and (di...&lt;br&gt;source=common_player_info"]
+    step_1["value_counts&lt;br&gt;df=step_0&lt;br&gt;column=display_first_last"]
+    step_2["value_counts&lt;br&gt;df=step_0&lt;br&gt;column=birthdate"]
+    step_3["value_counts&lt;br&gt;df=step_0&lt;br&gt;column=height"]
+    step_4["value_counts&lt;br&gt;df=step_0&lt;br&gt;column=draft_year"]
+    step_5["value_counts&lt;br&gt;df=step_0&lt;br&gt;column=draft_round"]
+    step_6["value_counts&lt;br&gt;df=step_0&lt;br&gt;column=draft_number"]
+    step_7["assign_column&lt;br&gt;df=step_0&lt;br&gt;column=career_length_seasons&lt;br&gt;expr=df['to_year'] - df['from_ye..."]
+    step_8["sort_values&lt;br&gt;df=step_7&lt;br&gt;by=['career_length_seasons', 'season_exp']&lt;br&gt;ascending=[False, False]"]
+    step_9["top_n&lt;br&gt;df=step_8&lt;br&gt;groupby_cols=[]&lt;br&gt;sort_col=career_length_seasons&lt;br&gt;n=20"]
+    step_10["select_columns&lt;br&gt;df=step_9&lt;br&gt;columns=[display_first_last, career_length_seasons, season_exp, ...]"]
+    step_11["plot_bar&lt;br&gt;df=step_10&lt;br&gt;x=display_first_last&lt;br&gt;y=career_length_seasons&lt;br&gt;title=Top 20 NBA Players by Caree...&lt;br&gt;episode_id=DS-25-007"]
+    step_12["value_counts&lt;br&gt;df=step_10&lt;br&gt;column=position"]
+    step_13["plot_bar&lt;br&gt;df=step_10&lt;br&gt;x=position&lt;br&gt;y=None&lt;br&gt;title=Position Distribution Among...&lt;br&gt;episode_id=DS-25-007"]
+    step_14["describe&lt;br&gt;df=step_10"]
+    step_15["generate_report&lt;br&gt;goal=Which NBA players since 199...&lt;br&gt;top_n_table=step_10&lt;br&gt;value_counts=step_12&lt;br&gt;describe_stats=step_14&lt;br&gt;segmentation=None&lt;br&gt;episode_id=DS-25-007"]
+    step_16["set_sanity_passed&lt;br&gt;"]
+    step_0 --> step_1
+    step_0 --> step_2
+    step_0 --> step_3
+    step_0 --> step_4
+    step_0 --> step_5
+    step_0 --> step_6
+    step_0 --> step_7
+    step_7 --> step_8
+    step_8 --> step_9
+    step_9 --> step_10
+    step_10 --> step_11
+    step_10 --> step_12
+    step_10 --> step_13
+    step_10 --> step_14
+    step_10 --> step_15
+    step_12 --> step_15
+    step_14 --> step_15

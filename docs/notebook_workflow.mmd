@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant CLI as CLI/Orchestrator
+    participant Harness as run_analysis()
+    participant Papermill as Papermill
+    participant NB as Notebook
+    participant NBConvert as nbconvert
+    participant HTML as HTML Output
+
+    CLI->>Harness: Call run_analysis(template, params, output)
+    Harness->>Papermill: Execute notebook with parameters
+    Papermill->>NB: Inject parameters, run all cells
+    NB-->>Papermill: Executed notebook (.ipynb)
+    Papermill-->>Harness: Return executed notebook
+    Harness->>NBConvert: Convert executed notebook to HTML
+    NBConvert-->>HTML: HTML file
+    Harness-->>CLI: Return executed notebook & HTML paths
+    CLI->>NB: Check outputs for sanity_passed
+    alt Sanity Passed
+        CLI-->>CLI: Exit 0 (success)
+    else Sanity Failed
+        CLI-->>CLI: Exit 1 (fail)
+    end 

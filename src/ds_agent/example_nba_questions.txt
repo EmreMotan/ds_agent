@@ -1,0 +1,20 @@
+Player Career Longevity
+Which NBA players have had the longest careers (by number of seasons or games played), and what are common characteristics (e.g., position, height, draft year) among them?
+Team Performance Trends
+How have team win percentages evolved over the decades? Are there teams that have consistently outperformed or underperformed relative to league averages?
+Draft Combine Predictiveness
+Do any draft combine metrics (e.g., vertical leap, sprint time) significantly correlate with future NBA performance (e.g., points per game, career longevity)?
+Home vs. Away Advantage
+Is there a statistically significant home-court advantage in terms of win rate, point differential, or specific stats (e.g., shooting percentage)?
+Game Pace Evolution
+How has the average pace of NBA games (e.g., possessions per game, points per game) changed over time, and what factors (rule changes, team strategies) might explain these trends?
+Clutch Performance
+Which players or teams have the best performance in “clutch” situations (e.g., last 5 minutes of close games), and what patterns emerge from play-by-play data?
+Rookie Impact
+How do rookie players’ performances compare to league averages, and which rookies have had the most impactful debut seasons?
+Injury/Inactive Analysis
+What is the relationship between player inactivity (games missed) and team performance? Are certain teams or player types more prone to missed games?
+Referee/Official Influence
+Do certain officials correlate with higher or lower foul rates, technical fouls, or other game outcomes?
+Team Relocation and Rebranding Effects
+For teams that have relocated or rebranded, how did their performance, fan engagement (attendance if available), or player retention change before and after the move?

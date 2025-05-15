@@ -1,0 +1,17 @@
+{
+  "steps": [
+    {
+      "tool": "load_table",
+      "args": {
+        "table": "<TABLE>",
+        "source": "<SOURCE>"
+      }
+    },
+    {
+      "tool": "describe",
+      "args": {
+        "df": "step_0"
+      }
+    }
+  ]
+}

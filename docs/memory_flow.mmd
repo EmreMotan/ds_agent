@@ -1,0 +1,49 @@
+sequenceDiagram
+    participant U as User
+    participant CLI as Memory CLI
+    participant M as Memory Backbone
+    participant Raw as Raw Storage
+    participant Chroma as ChromaDB
+    participant S as SentenceTransformer
+    
+    %% Ingest Flow
+    U->>CLI: bin/memory.py ingest --path docs/ --episode-id ep001
+    CLI->>M: ingest(path, episode_id)
+    
+    alt Is Directory
+        M->>M: Process each file recursively
+    else Is File
+        M->>M: Compute file hash
+        M->>Chroma: Check if already exists
+        
+        alt New File
+            M->>Raw: Copy file to raw storage
+            M->>M: Read and chunk content
+            M->>S: Generate embeddings
+            S-->>M: Return embeddings
+            M->>Chroma: Store chunks with metadata
+        else Already Exists
+            Chroma-->>M: Return existing document
+        end
+    end
+    
+    M-->>CLI: Return document ID(s)
+    CLI-->>U: Display success message
+    
+    %% Query Flow
+    U->>CLI: bin/memory.py query --query "customer churn analysis"
+    CLI->>M: query(text, k=5)
+    M->>S: Generate query embedding
+    S-->>M: Return embedding
+    M->>Chroma: Query for similar documents
+    Chroma-->>M: Return matching chunks
+    M->>M: Convert to MemoryChunk objects
+    M-->>CLI: Return chunks
+    CLI-->>U: Display results
+    
+    %% Integration with Episodes
+    U->>CLI: bin/manage_episode.py memory ingest --path report.md --episode-id ep001
+    CLI->>M: ingest(path, episode_id="ep001")
+    M->>M: Process file as above
+    M-->>CLI: Return document ID
+    CLI-->>U: Display success message 

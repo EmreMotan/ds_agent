@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant CLI as CLI
+    participant O as Orchestrator
+    participant ES as EpisodeStore
+    participant A as DataScienceAgent
+
+    CLI->>O: run_once(episode_id)
+    O->>ES: load_episode(episode_id)
+    ES-->>O: episode
+
+    alt episode.status == SCOPED
+        O->>A: plan_analysis(episode)
+        A-->>O: ok
+        O->>ES: update_episode(episode, IN_ANALYSIS)
+    else episode.status == IN_ANALYSIS
+        O->>A: run_analysis(episode)
+        A-->>O: ok
+        O->>ES: update_episode(episode, REVIEW)
+    else episode.status == REVISION
+        O->>A: revise_analysis(episode)
+        A-->>O: ok
+        O->>ES: update_episode(episode, REVIEW)
+    else episode.status in [BLOCKED, FINAL, ARCHIVED]
+        O-->>CLI: no action needed
+    end
+
+    O-->>CLI: done 

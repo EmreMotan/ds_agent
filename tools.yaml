@@ -1,0 +1,93 @@
+cohort_retention:
+  fn: ds_agent.analysis.cohort.run_retention
+  args: [signup_date, event_date, user_id]
+segmentation_lift:
+  fn: ds_agent.analysis.segmentation.lift_table
+  args: [df, metric_col, dim_col]
+funnel_conversion:
+  fn: ds_agent.analysis.funnel.funnel_conversion
+  args: [step_cols]
+bootstrap_mean_diff:
+  fn: ds_agent.analysis.stat_tests.bootstrap_mean_diff
+  args: [a, b, n, ci, two_tailed]
+load_table:
+  fn: ds_agent.data.load_table
+  args: [table, cols, where, source]
+describe_table:
+  fn: ds_agent.data.describe_table
+  args: [table, source]
+profile_table:
+  fn: ds_agent.data.profile_table
+  args: [table, source]
+select_columns:
+  fn: ds_agent.analysis.analytics_tools.select_columns
+  args: [df, columns]
+rename_columns:
+  fn: ds_agent.analysis.analytics_tools.rename_columns
+  args: [df, rename_dict]
+filter_rows:
+  fn: ds_agent.analysis.analytics_tools.filter_rows
+  args: [df, condition]
+groupby_aggregate:
+  fn: ds_agent.analysis.analytics_tools.groupby_aggregate
+  args: [df, groupby_cols, agg_dict, dropna, as_index]
+sort_values:
+  fn: ds_agent.analysis.analytics_tools.sort_values
+  args: [df, by, ascending]
+top_n:
+  fn: ds_agent.analysis.analytics_tools.top_n
+  args: [df, groupby_cols, sort_col, n]
+merge:
+  fn: ds_agent.analysis.analytics_tools.merge
+  args: [df1, df2, on, how, left_on, right_on, suffixes, validate, indicator]
+concat:
+  fn: ds_agent.analysis.analytics_tools.concat
+  args: [dfs, axis, ignore_index]
+pivot_table:
+  fn: ds_agent.analysis.analytics_tools.pivot_table
+  args: [df, index, columns, values, aggfunc]
+describe:
+  fn: ds_agent.analysis.analytics_tools.describe
+  args: [df]
+value_counts:
+  fn: ds_agent.analysis.analytics_tools.value_counts
+  args: [df, column]
+assign_column:
+  fn: ds_agent.analysis.analytics_tools.assign_column
+  args: [df, column, expr]
+set_sanity_passed:
+  fn: ds_agent.analysis.analytics_tools.set_sanity_passed
+  args: []
+validate_table:
+  fn: ds_agent.data.validate_table
+  args: [table, source]
+generate_report:
+  fn: ds_agent.analysis.analytics_tools.generate_report
+  args: [goal, top_n_table, value_counts, describe_stats, segmentation, episode_id]
+correlation:
+  fn: ds_agent.analysis.analytics_tools.correlation
+  args: [df, col1, col2, method]
+regression:
+  fn: ds_agent.analysis.analytics_tools.regression
+  args: [df, y, X, model_type, params]
+t_test:
+  fn: ds_agent.analysis.analytics_tools.t_test
+  args: [df, group_col, value_col, group1, group2]
+chi_square:
+  fn: ds_agent.analysis.analytics_tools.chi_square
+  args: [df, col1, col2]
+anova:
+  fn: ds_agent.analysis.analytics_tools.anova
+  args: [df, group_col, value_col]
+event_filter:
+  fn: ds_agent.analysis.analytics_tools.event_filter
+  args: [df, event_col, event_values]
+time_window_filter:
+  fn: ds_agent.analysis.analytics_tools.time_window_filter
+  args: [df, time_col, start, end]
+custom_metric:
+  fn: ds_agent.analysis.analytics_tools.custom_metric
+  args: [df, metric_name, expr]
+robust_merge:
+  fn: ds_agent.analysis.analytics_tools.robust_merge
+  args: [dfs, join_keys, how, suffixes, validate, indicator] 
